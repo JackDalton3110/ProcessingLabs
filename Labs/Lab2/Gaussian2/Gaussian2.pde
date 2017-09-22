@@ -1,6 +1,4 @@
-// Daniel Shiffman
-// The Nature of Code
-// http://www.shiffman.net/
+// Jack Dalton
 import java.util.*;
 Random generator;
 
@@ -8,7 +6,7 @@ void setup() {
   size(800,800);
   background(0);
   smooth();
-  frameRate(10000);
+  frameRate(1000000);
   generator = new Random();
 }
 
@@ -23,7 +21,7 @@ void draw() {
   float b = (float) generator.nextGaussian();
 
   //define standard deviation and mean
-  float sd = 145; float mean = 250;
+  float sd = 185; float mean = 100;
   //scale by standard deviation and mean
   //also constrain to between (0,255) since we are dealing with color
   r = constrain((r * sd) + mean,0,255);
@@ -41,9 +39,10 @@ void draw() {
   mean = width/2;
   xloc = ( xloc * sd ) + mean;
   yloc = ( yloc * sd ) + mean;
+  float rad = (random(50));
 
   //draw an ellipse with gaussian generated color and location
   noStroke();
   fill(r,g,b);
-  ellipse(xloc,yloc,random(50),random(50));
+  ellipse(xloc,yloc,rad,rad);
 }

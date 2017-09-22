@@ -14,7 +14,6 @@ class Mover {
   Mover() {
     // Start in the center
     position = new PVector(width/2,height/2);
-    velocity = new PVector(10,10);
     topspeed = 5;
   }
 
@@ -23,13 +22,9 @@ class Mover {
     // Compute a vector that points from position to mouse
     PVector mouse = new PVector(mouseX,mouseY);
     PVector velocity = PVector.sub(mouse,position);
-    // Set magnitude of acceleration
-    velocity.setMag(0.2);
     
-    // Velocity changes according to acceleration
-    velocity.add(velocity);
-    // Limit the velocity by topspeed
-    velocity.limit(topspeed);
+    velocity.setMag(2);
+    
     // position changes by velocity
     position.add(velocity);
   }

@@ -11,7 +11,9 @@ class Mover {
     // Start in the center
     position = new PVector(random(width),random(height));
     velocity = new PVector(0,0);
-    topspeed = 5;
+    topspeed = random(20.0);
+    print(topspeed);
+    print(acceleration);
   }
 
   void update() {
@@ -20,9 +22,8 @@ class Mover {
     PVector mouse = new PVector(mouseX,mouseY);
     acceleration = PVector.sub(mouse,position);
     // Set magnitude of acceleration
-    //acceleration.setMag(0.2);
     acceleration.normalize();
-    acceleration.mult(0.2);
+    acceleration.mult(0.2*random(5));
     
     // Velocity changes according to acceleration
     velocity.add(acceleration);
@@ -37,6 +38,7 @@ class Mover {
     strokeWeight(2);
     fill(127,200);
     ellipse(position.x,position.y,48,48);
+    print(acceleration);
   }
 
 }
