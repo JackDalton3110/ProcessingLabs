@@ -39,6 +39,7 @@ class Mover {
     fill(127,200);
     ellipse(position.x,position.y,48,48);
     print(acceleration);
+    print("\n");
   }
 
 }
