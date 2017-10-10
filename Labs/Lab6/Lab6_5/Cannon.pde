@@ -19,7 +19,7 @@ class Cannon
   {
     
     
-    translate(17,165);
+    translate(17,365);
     rotate(rad);
     fill(255);
     rect(0,-20,80,30);
