@@ -1,14 +1,41 @@
 class Cannon
 {
+  PShape cannon;
+  float ang;
+  
+  Cannon()
+  {
+    ang=0;
+  }
+  
+  void update()
+  {
+    
+  }
+  
   
   void display()
   {
-    rect(17,165,80,30);
+    
+    
+    translate(17,165);
+    rotate(ang);
     fill(255);
+    rect(0,-20,80,30);
+    
     
     fill(155,0,0);
-    ellipse(12,180,15,15);
+    translate(0,90);
+    ellipse(0,-95,15,15);
     
-
+    
+    
+  }
+  void keyPressed()
+  {
+  if(key==38)
+    {
+     
+    }
   }
 }

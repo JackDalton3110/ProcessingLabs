@@ -43,5 +43,17 @@ void keyPressed()
       m.applyForce(wind);
     
   }
+  if(keyCode==UP)
+  {
+    c.ang-=0.1;
+  }
+  if(keyCode==DOWN)
+  {
+    c.ang+=0.1;
+  }
+  
+  
+  
+ 
  
 }
