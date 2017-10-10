@@ -2,6 +2,7 @@ class Cannon
 {
   PShape cannon;
   float ang;
+  float rad;
   
   Cannon()
   {
@@ -19,13 +20,13 @@ class Cannon
     
     
     translate(17,165);
-    rotate(ang);
+    rotate(rad);
     fill(255);
-    rect(0,-20,70,50);
+    rect(0,-20,80,30);
     
     
     fill(155,0,0);
-    translate(0,100);
+    translate(0,90);
     ellipse(0,-95,15,15);
     
     

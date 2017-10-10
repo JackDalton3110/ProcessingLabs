@@ -1,7 +1,7 @@
 Mover m;
 Cannon c;
 
- PVector wind = new PVector(0.0,0);
+ PVector force = new PVector(0.0,0);
  PVector gravity = new PVector(0,0.1);
  boolean keypressed =false;
  boolean fired  = false;
@@ -37,10 +37,10 @@ void keyPressed()
   if(key==32&&fired==false)
   {
    
-      wind = new PVector(10.0,0);
+     force = new PVector(5.0,5.0);
      keypressed=true;
   
-      m.applyForce(wind);
+      m.applyForce(force);
     
   }
   if(keyCode==UP)

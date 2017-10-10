@@ -1,13 +1,15 @@
 class Mover {
 
   PVector location;
-  PVector initialVelocity;
+  PVector velocity;
   PVector acceleration;
+  PVector initialVelocity;
   float mass;
 
   Mover() {
-    location = new PVector(30,160);
     initialVelocity = new PVector(0,0);
+    location = new PVector(15,160);
+    velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
     mass = 1;
   }
@@ -18,8 +20,8 @@ class Mover {
   }
   
   void update() {
-    initialVelocity.add(acceleration);
-    location.add(initialVelocity);
+    velocity.add(acceleration);
+    location.add(velocity);
     acceleration.mult(0);
   }
 
@@ -34,14 +36,14 @@ class Mover {
 
     if (location.x > width) {
       location.x = width;
-      initialVelocity.x *= -1;
+      velocity.x *= -1;
     } else if (location.x < 0) {
-      initialVelocity.x *= -1;
+      velocity.x *= -1;
       location.x = 0;
     }
 
     if (location.y > height) {
-      initialVelocity.y *= -1;
+      velocity.y *= -1;
       location.y = height;
     }
 
