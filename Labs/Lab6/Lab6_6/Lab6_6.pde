@@ -92,16 +92,12 @@ void keyPressed()
     
   }
   
-  
- 
-    m.initialVelocity.x = force * cos(c.rad);
-    m.initialVelocity.y = force * sin(c.rad);
-    
   if(keyCode==82)
   {
     setup();
     PVector gravity = new PVector(0,0.0);
     keypressed = false;
+    force = 0;
     
   }
    if(keypressed)
@@ -109,4 +105,7 @@ void keyPressed()
     gravity = new PVector(0,0.2);
     m.applyForce(gravity);
   }
+   
+    m.initialVelocity.x = force * cos(c.rad);
+    m.initialVelocity.y = force * sin(c.rad);
 }
