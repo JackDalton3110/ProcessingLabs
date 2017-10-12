@@ -61,7 +61,7 @@ void keyPressed()
   if(keyCode==UP)
   {
     c.ang-=1;
-    c.rad = (c.ang * 3.142/180);
+    c.rad = (c.ang * PI/180);
   }
   if(keyCode==DOWN)
   {
