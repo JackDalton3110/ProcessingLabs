@@ -1,5 +1,6 @@
 Player p;
 Goal g;
+Obstacle o;
 
 void setup()
 {
@@ -7,6 +8,7 @@ void setup()
   smooth();
   p = new Player();
   g = new Goal();
+  o = new Obstacle();
 }
 
 void draw()
@@ -21,11 +23,12 @@ void draw()
   
   g.display();
   p.display();
+  o.display();
 }
 
 void keyPressed()
 {
-  if(keyCode == RIGHT)
+  if(keyCode == RIGHT&&p.location.x!=o.pos.x-30)
   {  
     p.location.x+=10;
   }
