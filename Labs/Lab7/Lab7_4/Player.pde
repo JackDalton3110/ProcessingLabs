@@ -1,6 +1,7 @@
 class Player
 {
   Goal g;
+  Obstacle o;
   PVector location;
   float mass;
   PVector force;
@@ -38,11 +39,13 @@ class Player
     acceleration.add(f);
   }
   
+ 
+  
   void display()
   {
     stroke(255,0,0);
     fill(255,0,0);
-    if(location.x > g.location.x-40&&location.x < g.location.x+40)
+    if(location.x > g.location.x-40&&location.x < g.location.x+40&&location.y>360)
     {
       stroke(255);
       fill(255);

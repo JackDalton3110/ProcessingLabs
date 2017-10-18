@@ -3,6 +3,7 @@ Goal g;
 Obstacle o;
 PVector grav = new PVector(0.0,0.25f);
 boolean jumped;
+boolean collided;
  boolean keyPress;
 
 void setup()
@@ -23,7 +24,22 @@ void draw()
   fill(0);
   rect(0,450,1200,400);
   
-  
+  if(p.location.x>=470&&p.location.x<530&&p.location.y>360)
+  {
+    collided=true;
+    p.velocity.x=0;
+    p.location.x=460;
+  }
+  else if(p.location.x>=530&&p.location.x<=580&&p.location.y>360)
+  {
+    collided=true;
+    p.velocity.x=0;
+    p.location.x=590;
+  }
+  else
+  {
+    collided = false;
+  }
   
   
   if(p.location.y + 10 >390)
@@ -43,32 +59,32 @@ void draw()
   o.display();
     
 }
-
+ 
 void keyPressed()
 {
   
   if(keyCode == UP)
   {
-    if(jumped==false)
+    if(p.location.y>360)
     {
       p.jump();
-      jumped=true;
     }
   }
   
   if(key==CODED)
   {
-    if(keyCode == RIGHT&&keyPress==false)
+    if(keyCode == RIGHT&&keyPress==false&&collided==false)
     {
+      
       keyPress=true;
       
       
-      p.velocity.add(p.moveRight);
+      p.velocity.add(p.moveRight); 
       
-      
+     
     }
     
-    if(keyCode==LEFT&&keyPress==false)
+    if(keyCode==LEFT&&keyPress==false&&collided==false)
     {
       keyPress=true;
       
@@ -77,6 +93,8 @@ void keyPressed()
     
   }
 }
+
+
 
  void keyReleased()
   {
