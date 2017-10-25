@@ -4,8 +4,7 @@ PowerBar power;
 
  float force = 0f;
  float locX;
- float locY;
- PVector gravity = new PVector(0,0.1);
+ float locY; PVector gravity = new PVector(0,0.1);
  boolean keypressed =false;
  boolean fired  = false;
 
@@ -62,10 +61,11 @@ void keyPressed()
   {
     c.ang-=1;
     c.rad = (c.ang * PI/180);
+    print(c.ang);
   }
   if(keyCode==DOWN)
   {
-    c.ang+=1;
+    
     c.rad = (c.ang * PI/180);
    
   }
