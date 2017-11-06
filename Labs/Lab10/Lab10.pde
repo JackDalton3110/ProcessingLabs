@@ -5,6 +5,7 @@ import org.jbox2d.dynamics.*;
 
 Player p;
 Ground g;
+Goal gL;
 
 Box2DProcessing box2d;
 
@@ -17,6 +18,8 @@ void setup()
   
   p = new Player(260,100);
   g = new Ground(100,800);
+  gL = new Goal();
+  
   
 }
 
@@ -27,6 +30,8 @@ void draw() {
   box2d.step();
   g.display();
   p.display();
+  gL.display();
+  
  
   // When the mouse is clicked, add a new Box object
   //Box p = new Box(mouseX, mouseY);
