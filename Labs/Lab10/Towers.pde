@@ -1,28 +1,27 @@
-class Player
+class Towers
 {
   //  Instead of any of the usual variables, we will store a reference to a Box2D Body
   Body body;      
   Vec2 pos;
-  float r;
-  Vec2 maxVel = new Vec2(10,20);
+  float w,h;
 
-  Player(float x, float y) 
+  Towers(float x, float y) 
   {
-    r = 40;
-    
-   
+    w = 100;
+    h = random(200,800);
+
     // Build Body
     BodyDef bd = new BodyDef();      
-    bd.type = BodyType.DYNAMIC;
+    bd.type = BodyType.KINEMATIC;
     bd.position.set(box2d.coordPixelsToWorld(x,y));
     body = box2d.createBody(bd);
 
 
     // Define a polygon (this is what we use for a rectangle)
-    CircleShape ps = new CircleShape();
-   ps.m_radius = box2d.scalarPixelsToWorld(r/2);
-   // Box2D considers the width and height of a
-         // rectangle to be the distance from the
+    PolygonShape ps = new PolygonShape();
+    float box2dW = box2d.scalarPixelsToWorld(w/2);
+    float box2dH = box2d.scalarPixelsToWorld(h/2);  // Box2D considers the width and height of a
+    ps.setAsBox(box2dW, box2dH);            // rectangle to be the distance from the
                            // center to the edge (so half of what we
                           // normally think of as width or height.) 
     // Define a fixture
@@ -30,35 +29,14 @@ class Player
     fd.shape = ps;
     // Parameters that affect physics
     fd.density = 1;
-    fd.friction = 1;
+    fd.friction = 0.3;
     fd.restitution = 0.5;
 
     // Attach Fixture to Body               
     body.createFixture(fd);
-     
   }
   
-  void jump()
-  {
-    if(body.getLinearVelocity().y<maxVel.y)
-    {
-    body.setLinearVelocity(new Vec2(body.getLinearVelocity().x,10));
-    }
-  }
-
-  
-  void applyForce(Vec2 force)
-  {
-    Vec2 f = body.getLinearVelocity();
-    if(body.getLinearVelocity().x<10||body.getLinearVelocity().x>-10)
-    {
-      body.setLinearVelocity(f.add(force));
-    }
-    
-  }
-  
-  
-  
+ 
   void display() 
   {
     // We need the Body’s location and angle
@@ -68,17 +46,12 @@ class Player
     pushMatrix();
     translate(pos.x,pos.y);    // Using the Vec2 position and float angle to
     rotate(-a);              // translate and rotate the rectangle
-    fill(255,0,0);
+    fill(0,0,255);
     stroke(0);
-    if(pos.x >=755&&pos.x<=850&&pos.y>=250&&pos.y<=310)
-    {
-      fill(255);
-      stroke(255);
-    }
     strokeWeight(2);
     rectMode(CENTER);
-    ellipse(0,0,r,r);
+    rect(0,0,w,h);
     popMatrix();
   }
 
-}
+} 

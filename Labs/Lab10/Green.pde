@@ -1,14 +1,14 @@
-// A rectangular box
-class Ground {
+class Green
+{
   //  Instead of any of the usual variables, we will store a reference to a Box2D Body
   Body body;      
   Vec2 pos;
   float w,h;
 
-  Ground(float x, float y) 
+  Green(float x, float y) 
   {
-    w = 5000;
-    h = 950;
+    w = 100;
+    h = random(200,800);
 
     // Build Body
     BodyDef bd = new BodyDef();      
@@ -30,7 +30,7 @@ class Ground {
     // Parameters that affect physics
     fd.density = 1;
     fd.friction = 0.3;
-    fd.restitution = 0.5;
+    fd.restitution = 0.85;
 
     // Attach Fixture to Body               
     body.createFixture(fd);
@@ -46,7 +46,7 @@ class Ground {
     pushMatrix();
     translate(pos.x,pos.y);    // Using the Vec2 position and float angle to
     rotate(-a);              // translate and rotate the rectangle
-    fill(0);
+    fill(0,255,0);
     stroke(0);
     strokeWeight(2);
     rectMode(CENTER);
@@ -54,4 +54,4 @@ class Ground {
     popMatrix();
   }
 
-}
+} 

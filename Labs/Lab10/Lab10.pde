@@ -3,9 +3,14 @@ import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 
+
+
 Player p;
-Ground g;
 Goal gL;
+Green tg1;
+Towers t1;
+Towers t2;
+Green tg2;
 
 Box2DProcessing box2d;
 
@@ -16,9 +21,13 @@ void setup()
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   
-  p = new Player(260,100);
-  g = new Ground(100,800);
+  p = new Player(150,100);
   gL = new Goal();
+  tg1 = new Green(150,500);
+  t1 = new Towers(400,500);
+  t2 = new Towers(800,500);
+  tg2 = new Green(600,500);
+  
   
   
 }
@@ -28,9 +37,12 @@ void draw() {
 
   // We must always step through time!
   box2d.step();
-  g.display();
   p.display();
   gL.display();
+  tg1.display();
+  t1.display();
+  tg2.display();
+  t2.display();
   
  
   // When the mouse is clicked, add a new Box object
