@@ -3,7 +3,7 @@ import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 
-// A list for all of our rectangles
+
 ArrayList<Box> boxes;
 Box b;
 Obstacle o;

@@ -8,7 +8,7 @@ class Green
   Green(float x, float y) 
   {
     w = 100;
-    h = random(200,800);
+    h = random(250,500);
 
     // Build Body
     BodyDef bd = new BodyDef();      

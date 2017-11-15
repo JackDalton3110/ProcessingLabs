@@ -11,12 +11,27 @@ Green tg1;
 Towers t1;
 Towers t2;
 Green tg2;
+ArrayList <Triangle> points;
+
+int click;
+
+float x1 = 0;
+float y1 = 0;
+float x2 = 0;
+float y2 = 0;
+float x3 = 0;
+float y3 = 0;
+
+
+
+boolean jumped;
 
 Box2DProcessing box2d;
 
 void setup()
 {
   size(1000,600);
+  jumped=false;
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
@@ -27,7 +42,8 @@ void setup()
   t1 = new Towers(400,500);
   t2 = new Towers(800,500);
   tg2 = new Green(600,500);
-  
+
+  points = new ArrayList<Triangle>();
   
   
 }
@@ -37,19 +53,38 @@ void draw() {
 
   // We must always step through time!
   box2d.step();
-  p.display();
   gL.display();
+  p.display();
+ 
   tg1.display();
   t1.display();
   tg2.display();
   t2.display();
   
+  
+      if(p.pos.x>940)
+      p.applyForce(new Vec2(-5,0)); 
+      else if(p.pos.x< 30)
+      p.applyForce(new Vec2(5,0));
+      else if(p.pos.y<30)
+      p.applyForce(new Vec2 (0,-5));
+      
+       for (Triangle tr: points) {
+    tr.display();
+  }
+      
+    for (int i = points.size()-1; i >= 0; i--) {
+    Triangle tr = points.get(i);
+    if (tr.drawn()) {
+      points.remove(i);
+    }
+  }
  
-  // When the mouse is clicked, add a new Box object
-  //Box p = new Box(mouseX, mouseY);
-  //boxes.add(p);
-
-  // Display all the boxes
+ pushMatrix();
+  fill(255,255,0);
+  translate(width*0.8, height*0.5);
+  rotate(60);
+  popMatrix();
 
   }
   
@@ -61,12 +96,13 @@ void draw() {
   {
     if(keyCode == RIGHT)
     {
+      if(p.pos.x<950)
       p.applyForce(new Vec2(5,0)); 
     }
     
     else if(keyCode==LEFT)
     {
-      if(p.pos.x>0)
+      if(p.pos.x>50)
       {
       p.applyForce(new Vec2(-5,0));
       }
@@ -75,11 +111,57 @@ void draw() {
     
     else if(keyCode == UP)
     {
-      if(p.pos.y>250)
+      if(jumped==false && p.pos.y >40)
       {
-      p.jump();
+        jumped=true;
+        p.jump();
       }
     }
   
  }
+ 
+}
+
+    void keyReleased()
+  {
+      if(keyCode == UP)
+    {
+      if(jumped==true&&p.pos.y <=350)
+      {
+        jumped=false;
+      }
+    }
+  }
+
+void mouseClicked()
+{
+  if (click == 0)
+  {
+   
+    x1 = mouseX;
+    y1 = mouseY;
+    click += 1;
+  }
+  else if (click == 1)
+  {
+  
+    x2 = mouseX;
+    y2 = mouseY;
+    click += 1;
+  }
+  else if (click == 2)
+  {
+    
+    x3 = mouseX;
+    y3 = mouseY;
+    click += 1;
+  }
+  else if (click == 3)
+  {
+  Triangle tr = new Triangle(x1,y1,x2,y2,x3,y3);
+  points.add(tr);
+  click = 0;
+  }
+   
+  
 }

@@ -70,11 +70,6 @@ class Player
     rotate(-a);              // translate and rotate the rectangle
     fill(255,0,0);
     stroke(0);
-    if(pos.x >=755&&pos.x<=850&&pos.y>=250&&pos.y<=310)
-    {
-      fill(255);
-      stroke(255);
-    }
     strokeWeight(2);
     rectMode(CENTER);
     ellipse(0,0,r,r);

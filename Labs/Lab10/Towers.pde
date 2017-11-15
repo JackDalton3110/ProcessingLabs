@@ -8,7 +8,7 @@ class Towers
   Towers(float x, float y) 
   {
     w = 100;
-    h = random(200,800);
+    h = random(250,600);
 
     // Build Body
     BodyDef bd = new BodyDef();      
