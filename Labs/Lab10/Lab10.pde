@@ -89,27 +89,8 @@ void draw() {
   }
   
     void keyPressed()
-{
-   
-  
-  if(key==CODED)
-  {
-    if(keyCode == RIGHT)
-    {
-      if(p.pos.x<950)
-      p.applyForce(new Vec2(5,0)); 
-    }
-    
-    else if(keyCode==LEFT)
-    {
-      if(p.pos.x>50)
-      {
-      p.applyForce(new Vec2(-5,0));
-      }
-  
-    }
-    
-    else if(keyCode == UP)
+{   
+    if(keyCode == UP)
     {
       if(jumped==false && p.pos.y >40)
       {
@@ -117,8 +98,6 @@ void draw() {
         p.jump();
       }
     }
-  
- }
  
 }
 
@@ -135,6 +114,12 @@ void draw() {
 
 void mouseClicked()
 {
+  
+   if(dist(p.pos.x,p.pos.y,mouseX,mouseY)<10)
+   {
+     p.applyForce(new Vec2(100,0));
+   }
+   
   if (click == 0)
   {
    
@@ -163,5 +148,6 @@ void mouseClicked()
   click = 0;
   }
    
+  
   
 }
