@@ -23,7 +23,7 @@ float x3 = 0;
 float y3 = 0;
 
 
-
+boolean win;
 boolean jumped;
 
 Box2DProcessing box2d;
@@ -32,6 +32,7 @@ void setup()
 {
   size(1000,600);
   jumped=false;
+  win = false;
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
@@ -69,6 +70,14 @@ void draw() {
       else if(p.pos.y<30)
       p.applyForce(new Vec2 (0,-5));
       
+  if(p.pos.x >=540 &&p.pos.x<=640 &&
+    p.pos.y >=40 &&p.pos.y<=120 )
+  {
+    win=true;
+  }
+  
+ 
+      
        for (Triangle tr: points) {
     tr.display();
   }
@@ -86,6 +95,12 @@ void draw() {
   rotate(60);
   popMatrix();
 
+ if(win==true)
+  {
+    textSize(60);
+    text("You win!!",300,200);
+    fill(0,255,0);
+  }
   }
   
     void keyPressed()

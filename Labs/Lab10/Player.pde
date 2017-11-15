@@ -69,6 +69,11 @@ class Player
     translate(pos.x,pos.y);    // Using the Vec2 position and float angle to
     rotate(-a);              // translate and rotate the rectangle
     fill(255,0,0);
+    if(pos.x >=540 &&pos.x<=640 &&
+    pos.y >=40 &&pos.y<=120 )
+  {
+    fill(0,255,0);
+  }
     stroke(0);
     strokeWeight(2);
     rectMode(CENTER);
