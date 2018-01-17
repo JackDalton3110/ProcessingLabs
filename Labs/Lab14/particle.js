@@ -10,8 +10,11 @@ class Particle
     this.velocity.y = (Math.random() * 4) - 2
     this.acceleration = []
     this.acceleration.x = 0
-    this.acceleration.y = 0.1
+    this.acceleration.y = -0.2
     this.lifespan = 1
+
+    this.img = new Image()
+    this.img.src = "smoke.png"
   }
 
   run()
@@ -35,13 +38,10 @@ class Particle
     var canvas = document.getElementById('mycanvas')
     var ctx = canvas.getContext('2d')
 
-    var R = 7
-    ctx.beginPath()
-    ctx.arc(this.location.x, this.location.y, R, 0, 2 * Math.PI, false)
-    ctx.lineWidth = 4
-    ctx.strokeStyle = '#7F7F7F'
-    ctx.globalAlpha = '#000000'
-    ctx.stroke()
+
+    ctx.globalAlpha = this.lifespan
+    var image = this.img
+    ctx.drawImage(image, this.location.x,this.location.y)
   }
 
 }
