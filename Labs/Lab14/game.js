@@ -5,11 +5,6 @@ class game
     console.log("game constructed")
     gameNs.particles  =[]
 
-    for (var i =0; i<100;i++)
-    {
-      gameNs.particles.push(new Particle(500,100))
-    }
-
   }
 
   InitWorld()
@@ -24,9 +19,19 @@ class game
     var ctx = canvas.getContext('2d')
     ctx.clearRect(0,0,canvas.width,canvas.height)
     window.requestAnimationFrame(gameNs.game.update)
-    for (var i =0; i<100; i++)
+
+    if(gameNs.particles.length<1000)
+    {
+      gameNs.particles.push(new Particle(300,100))
+    }
+
+    for (var i =0; i<gameNs.particles.length; i++)
     {
       gameNs.particles[i].run();
+      if(gameNs.particles[i].lifespan<0.1)
+      {
+        gameNs.particles.splice(i,1)
+      }
     }
 
   }
